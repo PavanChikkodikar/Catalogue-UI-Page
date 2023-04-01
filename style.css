@@ -38,10 +38,10 @@ header .logo{
 
 header .search-box{
     flex: 0.5;
-
-    /* margin-top: 5%; */
     position:relative ;
-    margin-left: 90px;
+    margin: 0 auto;
+    display: inline-block;
+    
     
 }
 
@@ -52,7 +52,7 @@ header .search-box{
     outline: none;
     background:#f4f2f2;
     border-radius: 30px;
-    color:rgb(244, 240, 240);
+    color:rgb(9, 8, 8);
     font-size: 18px;
     padding-left: 50px;
     padding-right: 40px;
@@ -72,6 +72,7 @@ header .search-box{
     transform: scale(0.9);
     background: rgb(65, 98, 189);
     color: #fff;
+    /* border-radius: 30px; */
 }
 
 .product-card {
@@ -116,6 +117,8 @@ header .search-box{
     font-size: 16px;
     padding: 10px;
     margin-left: 4px;
+    border-radius: 17px;
+    
     /* pad-right: auto; */
   }
 
@@ -175,17 +178,22 @@ header .search-box{
 }
 
 #load-more{
-    margin-top: 20px;
+  /* padding-right: 100px; */
     display: inline-block;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    /* display: inline-block; */
     padding: 13px 30px;
     border: 1px solid #334;
     color: #334;
     font-size: 16px;
     background-color: #fff;
     cursor: pointer;
-    justify-content: center;
-    
+    /* justify-content: center; */
+      
 }
+
 
 #load-more:hover{
     background-color: #00bfff;
