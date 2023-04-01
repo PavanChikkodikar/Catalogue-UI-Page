@@ -17,15 +17,15 @@ header{
     background: rgba(50, 13, 199, 0.5);
 }
 
-
-
 #chk1{
     display: none;   
 }
+
 i{
     color: #fff;
     cursor: pointer;
 }
+
 header .logo{
     flex: 0.2;
     color:#fff;
@@ -74,11 +74,6 @@ header .search-box{
     color: #fff;
 }
 
-/* .product-img{
-    height: 250px;
-    width: 250px;
-} */
-
 .product-card {
     border: 0.6px solid #eae6e6;
     border-radius: 10px;
@@ -123,16 +118,21 @@ header .search-box{
     margin-left: 4px;
     /* pad-right: auto; */
   }
- 
 
-  .all-products{
+  .float-container .all-productss{
     padding-top: 100px;
     width: 80%;
     float: left;
     padding: 20px;
     
-
   }
+
+  .all-products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
 
   .all-products :hover {
     opacity: 0.8;
@@ -164,11 +164,10 @@ header .search-box{
     padding: 20px;
     /* border-bottom: 2px solid blue; */
     padding-top: 60px;
-}
+  }
 
 #filters{
     width: 20%;
-
 }
 
 .filters{
@@ -184,6 +183,8 @@ header .search-box{
     font-size: 16px;
     background-color: #fff;
     cursor: pointer;
+    justify-content: center;
+    
 }
 
 #load-more:hover{
