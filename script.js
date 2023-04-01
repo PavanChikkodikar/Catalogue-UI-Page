@@ -62,3 +62,34 @@ loadMoreBtn.onclick = () =>{
     loadMoreBtn.style.display = 'none';
   }
 }
+
+// js code for search
+// let Products = {
+//   data:[
+//     {
+//     productName:"Bumper Colouring Book 1 : Fun Drawing and Painting Book for Kid (3 to 5 years)",
+//     // category:"",
+//     image:"https://pim-assets.unbxd.com/images/e17f1f63216d021d5fcbd7933c311b72/1670503692847_DRMLND_0264.jpg",
+//     },
+//     {
+//       productName:"Explosion Box",
+//       // category:"",
+//       image:"https://pim-assets.unbxd.com/images/e17f1f63216d021d5fcbd7933c311b72/1670500696162_TOYKRAFT_0110_01.jpg",
+//     },
+//   ],
+// };
+
+// for(let i of Products.data){
+
+//   let card = document.createElement("div");
+//   card.classList.add("card","i.category");
+//   let imgContainer = document.createElement("div");
+//   imgContainer.classList.add("image-conatiner");
+//   let image = document.createElement("img");
+//   image.setAttribute("src",i.image);
+//   imgContainer.appendChild(image);
+//   card.append(imgContainer);
+//   document.getElementById("Products").appendChild(card);
+
+
+// }
