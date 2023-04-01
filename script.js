@@ -46,3 +46,19 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
 
   .catch(error => console.log('error', error));
 }
+
+// code for load more button
+let loadMoreBtn = document.querySelector('#load-more');
+let currentItem = 4;
+
+loadMoreBtn.onclick = () =>{
+  let boxes  = [...document.querySelectorAll('.product-card')]; 
+  for (var i=currentItem; i<currentItem+4;i++){ 
+    boxes[i].style.display = 'inline-block';
+  }
+  currentItem += 4;
+
+  if(currentItem >= boxes.length){
+    loadMoreBtn.style.display = 'none';
+  }
+}
