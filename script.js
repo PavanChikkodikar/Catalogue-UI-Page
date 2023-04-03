@@ -93,3 +93,17 @@ loadMoreBtn.onclick = () =>{
 
 
 // }
+
+// fetch('https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e67002742cef')
+// .then(res => {
+//   return res.json();
+// })
+// .then(data =>{
+//   console.log(data);
+//   data.forEach(user => {
+//     const markup = `<li>${user.name}</li>`;
+
+//     document.querySelector('ul').insertAdjacentHTML('beforeend',markup);
+//   });
+// })
+// .catch(error => console.log(error));

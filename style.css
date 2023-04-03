@@ -104,6 +104,17 @@ header .search-box{
     font-size: 14px;
     margin: 10px 0;
   }
+
+  /* .product-info h2 {
+    font-size: 24px;
+    margin: 0;
+  } */
+
+  .product-info .price {
+    color: #090909;
+    font-size: 18px;
+    margin: 0;
+  }
   
   .see-details {
     background-color: #00bfff;
@@ -189,6 +200,15 @@ header .search-box{
     background-color: #00bfff;
     border-color: #00bfff;
     color: #fff;
+}
+
+/* body{
+  min-height: 100vh;
+} */
+
+.sticky-footer{
+  position: sticky;
+  top: 100px;
 }
 
 
