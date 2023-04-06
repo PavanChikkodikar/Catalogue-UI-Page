@@ -1,6 +1,16 @@
+//function for search 
+function search(){
+  let searchQuery = document.getElementById("srch").value;
+  window.parent.location=`index_PLP.html?q=${searchQuery}`;
+}
+
+
 window.onload = function()
 {
-    var myHeaders = new Headers();
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  let prod_query = urlParams.get('q');
+  var myHeaders = new Headers();
 myHeaders.append("Accept", "*/*");
 myHeaders.append("Accept-Language", "en-GB,en-US;q=0.9,en;q=0.8");
 myHeaders.append("Connection", "keep-alive");
@@ -19,9 +29,9 @@ myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
 
 var raw = JSON.stringify({
   "page": 1,
-  "count": 50,
+  "count": 20,
   "facet_filters": [],
-  "search_str": "Super"
+  "search_str": prod_query 
 });
 
 var requestOptions = {
@@ -31,79 +41,55 @@ var requestOptions = {
   redirect: 'follow'
 };
 
+
+
 fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e67002742cef", requestOptions)
-  .then(response => response.json())
-  .then(result => 
-    {product=result["response"]["products"]
-  numberOfProducts=result["response"]["numberOfProducts"]
-    console.log(product)
-    console.log(numberOfProducts)
-    for(i=0;i<product.length;i++)
-    {
-        console.log(product[i]['field_390'])
-    }
-})
+  .then(response => {
+    response.json().then(data => {
+      let prodcard = document.getElementById("forma")
+      products = data["response"]["products"]
+      for (let i = 0; i < products.length; i++) {
 
-  .catch(error => console.log('error', error));
+        let card = document.createElement("div")
+        let cardImg = document.createElement("img")
+        let cardBody = document.createElement("div")
+        let cardTitle = document.createElement("h6")
+        let cardUniqueId = document.createElement("p")
+        let cardLink = document.createElement("a")
+
+        card.classList.add("card")
+        cardImg.classList.add("card-img-top")
+        cardBody.classList.add("card-body")
+        cardTitle.classList.add("card-title")
+        cardLink.classList.add("btn", "btn-dark", "stretched-link")
+
+        cardImg.setAttribute("src", products[i]["productImage"])
+        cardImg.setAttribute("alt", "...")
+        cardTitle.textContent = products[i]["productName"]
+        cardUniqueId.textContent = "UniqueId:" + products[i]["uniqueId"]
+        cardLink.setAttribute("href", "/pdp.html?ProductId=" + products[i]["uniqueId"])
+        // cardLink.textContent = "View Product"
+
+        cardBody.appendChild(cardTitle)
+        cardBody.appendChild(cardUniqueId)
+        cardBody.appendChild(cardLink)
+        card.appendChild(cardImg)
+        card.appendChild(cardBody)
+        prodcard.appendChild(card)
+
+        card.style.maxWidth = "18rem"
+        card.style.margin = "1rem"
+        card.style.border = "1px solid #dee2e6"
+        cardImg.style.width = "100%"
+        cardLink.style.position = "absolute"
+        cardLink.style.bottom = "0"
+        cardLink.style.width = "100%"
+        
+      }
+    })
+  })
+
+
+
+
 }
-
-// code for load more button
-let loadMoreBtn = document.querySelector('#load-more');
-let currentItem = 4;
-
-loadMoreBtn.onclick = () =>{
-  let boxes  = [...document.querySelectorAll('.product-card')]; 
-  for (var i=currentItem; i<currentItem+4;i++){ 
-    boxes[i].style.display = 'inline-block';
-  }
-  currentItem += 4;
-
-  if(currentItem >= boxes.length){
-    loadMoreBtn.style.display = 'none';
-  }
-}
-
-// js code for search
-// let Products = {
-//   data:[
-//     {
-//     productName:"Bumper Colouring Book 1 : Fun Drawing and Painting Book for Kid (3 to 5 years)",
-//     // category:"",
-//     image:"https://pim-assets.unbxd.com/images/e17f1f63216d021d5fcbd7933c311b72/1670503692847_DRMLND_0264.jpg",
-//     },
-//     {
-//       productName:"Explosion Box",
-//       // category:"",
-//       image:"https://pim-assets.unbxd.com/images/e17f1f63216d021d5fcbd7933c311b72/1670500696162_TOYKRAFT_0110_01.jpg",
-//     },
-//   ],
-// };
-
-// for(let i of Products.data){
-
-//   let card = document.createElement("div");
-//   card.classList.add("card","i.category");
-//   let imgContainer = document.createElement("div");
-//   imgContainer.classList.add("image-conatiner");
-//   let image = document.createElement("img");
-//   image.setAttribute("src",i.image);
-//   imgContainer.appendChild(image);
-//   card.append(imgContainer);
-//   document.getElementById("Products").appendChild(card);
-
-
-// }
-
-// fetch('https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e67002742cef')
-// .then(res => {
-//   return res.json();
-// })
-// .then(data =>{
-//   console.log(data);
-//   data.forEach(user => {
-//     const markup = `<li>${user.name}</li>`;
-
-//     document.querySelector('ul').insertAdjacentHTML('beforeend',markup);
-//   });
-// })
-// .catch(error => console.log(error));
