@@ -1,15 +1,69 @@
+
+//function debounce
+function debounce(func,delay=3000){
+  let timer;
+  return (args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this,args);
+    }, delay);
+  };
+}
+
 //function for search 
 function search(){
   let searchQuery = document.getElementById("srch").value;
   window.parent.location=`index_PLP.html?q=${searchQuery}`;
 }
 
+function checkbox(){
+  var dict = {}
+  var markedCheckBox = document.querySelectorAll('input[type="checkbox"]:checked.filter');
+  for (let i=0;i<markedCheckBox.length;i+=1){
+    if (!(markedCheckBox[i].name in dict)){
+      dict[markedCheckBox[i].name] = [];
+      dict[markedCheckBox[i].name].push(markedCheckBox[i].id)
+    }
+    else if (markedCheckBox[i].name in dict){
+      dict[markedCheckBox[i].name].push(markedCheckBox[i].id);
+    }
+  }
+  var keys = Object.keys(dict) || [];
+  var facetQuery = [];
+  for (let i = 0; i<keys.length; i += 1){
+    for (let j = 0;j < dict[keys[i]].length;j += 1){
+      var stri = "";
+          stri += (keys[i]);
+          stri += ":\\";
+          stri +='"';
+          stri += (dict[keys[i]][j]);
+          stri += "\\";
+          stri += '"';
+          facetQuery.push(String(stri))
+    
+    }
+  }
+  window.location.href = `index_PLP.html?facets=${facetQuery}`
+}
+
+const processChanges = debounce(() => search());
+const check = debounce(() => checkbox());
 
 window.onload = function()
 {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let prod_query = urlParams.get('q');
+  let facets = urlParams.get('facets');
+  let decoded = decodeURIComponent(facets);
+  const facetArray = decoded.split(",")
+    const decodedFacetArray = [];
+    for (let i = 0;i < facetArray.length;i += 1){
+      let newq = facetArray[i].replaceAll('\\\"','\"');
+      decodedFacetArray.push(newq)
+    }
+    if (decodedFacetArray[0] === "null"){
+      decodedFacetArray.pop()
+    }
   var myHeaders = new Headers();
 myHeaders.append("Accept", "*/*");
 myHeaders.append("Accept-Language", "en-GB,en-US;q=0.9,en;q=0.8");
@@ -30,7 +84,7 @@ myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
 var raw = JSON.stringify({
   "page": 1,
   "count": 20,
-  "facet_filters": [],
+  "facet_filters": decodedFacetArray,
   "search_str": prod_query 
 });
 
@@ -48,6 +102,9 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
     response.json().then(data => {
       let prodcard = document.getElementById("forma")
       products = data["response"]["products"]
+      let filters = data["facets"]
+      console.log(filters)
+      //iterating throught all products 
       for (let i = 0; i < products.length; i++) {
 
         let card = document.createElement("div")
@@ -63,6 +120,17 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         cardTitle.classList.add("card-title")
         cardLink.classList.add("btn", "btn-dark", "stretched-link")
 
+              // define a variable for the default image URL
+        const defaultImageUrl = '/Images/default_img.jpeg';
+
+        // loop over the products array
+        for (let i = 0; i < products.length; i++) {
+          // check if the current product's productImage property is undefined
+          if (products[i]["productImage"] === undefined) {
+            // set the productImage property to the default image URL
+            products[i]["productImage"] = defaultImageUrl;
+          }
+        }
         cardImg.setAttribute("src", products[i]["productImage"])
         cardImg.setAttribute("alt", "...")
         cardTitle.textContent = products[i]["productName"]
@@ -84,12 +152,43 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         cardLink.style.position = "absolute"
         cardLink.style.bottom = "0"
         cardLink.style.width = "100%"
-        
+
       }
+    //getting all the filters
+      for (let fieldId in filters) {
+        const displayName = filters[fieldId].displayName;
+        const values = filters[fieldId].values;
+        // console.log("displayName: ", displayName);
+        // console.log("values: ", values);
+
+            sideBar = document.getElementsByClassName('sidebar')[0];
+            facets = data["facets"] || {};
+            keys = Object.keys(facets) || [];
+            sideBar.innerHTML += '<hr class="horizontalbreak1">'
+            for (ind in keys) {
+              var fieldName = document.createElement("div");
+      
+              fieldName.innerHTML += `
+              <p class="p"><b>${facets[keys[ind]]["displayName"]}</b></p>
+              <form id = "category">
+              `
+              for (let ind2 = 0; ind2 < facets[keys[ind]]["values"].length; ind2 += 2) {
+      
+                  fieldName.innerHTML += `
+                      <input type="checkbox" class="filter" name="`+facets[keys[ind]]["fieldId"]+`" id="`+facets[keys[ind]]["values"][ind2]+`" onchange=check()>
+                      <label for="categorylabel"> ${facets[keys[ind]]["values"][ind2]}(${(facets[keys[ind]]["values"][ind2+1])})</label><br>
+                  `
+              }
+              fieldName.innerHTML += '<hr class="horizontalbreak1">';
+              fieldName.innerHTML += "</form>";
+              sideBar.appendChild(fieldName);
+            }
+      }
+
+
+
     })
   })
-
-
 
 
 }
