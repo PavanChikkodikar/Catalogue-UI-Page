@@ -1,5 +1,4 @@
-
-//function debounce
+//function for debounce
 function debounce(func,delay=3000){
   let timer;
   return (args) => {
@@ -15,6 +14,7 @@ function search(){
   window.parent.location=`index_PLP.html?q=${searchQuery}`;
 }
 
+//function for checkbox in facets/filters
 function checkbox(){
   var dict = {}
   var markedCheckBox = document.querySelectorAll('input[type="checkbox"]:checked.filter');
@@ -47,6 +47,7 @@ function checkbox(){
 
 const processChanges = debounce(() => search());
 const check = debounce(() => checkbox());
+
 
 window.onload = function()
 {
@@ -83,7 +84,7 @@ myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
 
 var raw = JSON.stringify({
   "page": 1,
-  "count": 20,
+  "count": 21,
   "facet_filters": decodedFacetArray,
   "search_str": prod_query 
 });
@@ -113,36 +114,41 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         let cardTitle = document.createElement("h6")
         let cardUniqueId = document.createElement("p")
         let cardLink = document.createElement("a")
+        // let cardButton = document.createElement("button")
 
         card.classList.add("card")
         cardImg.classList.add("card-img-top")
         cardBody.classList.add("card-body")
         cardTitle.classList.add("card-title")
         cardLink.classList.add("btn", "btn-dark", "stretched-link")
-
-              // define a variable for the default image URL
+        // cardButton.classList.add("btn", "btn-dark", "stretched-link")
+        //displaying the default image if we dont have any product image
         const defaultImageUrl = '/Images/default_img.jpeg';
-
-        // loop over the products array
         for (let i = 0; i < products.length; i++) {
-          // check if the current product's productImage property is undefined
           if (products[i]["productImage"] === undefined) {
-            // set the productImage property to the default image URL
             products[i]["productImage"] = defaultImageUrl;
           }
         }
+        
         cardImg.setAttribute("src", products[i]["productImage"])
         cardImg.setAttribute("alt", "...")
         cardTitle.textContent = products[i]["productName"]
         cardUniqueId.textContent = "UniqueId:" + products[i]["uniqueId"]
         cardLink.setAttribute("href", "/pdp.html?ProductId=" + products[i]["uniqueId"])
-        // cardLink.textContent = "View Product"
-
+        // cardButton.textContent = "View Product"
+    
+        var cardButton = document.createElement("button");
+        cardButton.textContent = "View Product";
+        var myCard = document.getElementById("myCard");
+        cardButton.onclick = function() {
+          window.open(`index_PDP.html?ProductId=${products[i]['uniqueId']}`);
+        };
         cardBody.appendChild(cardTitle)
         cardBody.appendChild(cardUniqueId)
         cardBody.appendChild(cardLink)
         card.appendChild(cardImg)
         card.appendChild(cardBody)
+        card.appendChild(cardButton);
         prodcard.appendChild(card)
 
         card.style.maxWidth = "18rem"
@@ -152,15 +158,16 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         cardLink.style.position = "absolute"
         cardLink.style.bottom = "0"
         cardLink.style.width = "100%"
+        cardButton.style.marginLeft = "100px"
+        cardButton.style.height = "45px"
+        cardButton.style.width = "90px"
+        cardButton.style.borderRadius = "15px"
 
       }
     //getting all the filters
       for (let fieldId in filters) {
         const displayName = filters[fieldId].displayName;
         const values = filters[fieldId].values;
-        // console.log("displayName: ", displayName);
-        // console.log("values: ", values);
-
             sideBar = document.getElementsByClassName('sidebar')[0];
             facets = data["facets"] || {};
             keys = Object.keys(facets) || [];
@@ -184,11 +191,6 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
               sideBar.appendChild(fieldName);
             }
       }
-
-
-
     })
   })
-
-
 }

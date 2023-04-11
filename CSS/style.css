@@ -17,13 +17,9 @@ header{
 }
 
 .logo{
-    flex: 0.2;
-    color:#fff;
-    height: 80px;
-    width: 2px;
+    height: 90px;
+    width: 130px;
     margin-left: 10px;
-    font-size: 5px;
-
 }
 
 .search-box{
@@ -62,18 +58,6 @@ header{
     color: #fff;
 }
 
-.product-card {
-    border: 0.6px solid #eae6e6;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 3px;
-    display: none;  
-    flex-direction:row;
-    overflow: hidden;
-    width: 200px;
-    margin: 30px;
-  }
-
   .sidebar {
     margin: 0;
     padding: 0;
@@ -86,9 +70,10 @@ header{
     text-align: left;
     margin-top: 1rem;
   }
-  
+
   .p{
     text-align: center;
+    color:  rgb(65, 98, 189);
   }
 
 #forma{
@@ -106,13 +91,14 @@ header{
   border-radius:8px;
   transition: all .5s ease;
   color:white;
-  background-color: #afa1a1;
+  background-color: #504d4d;
 }
+
 
 .card:hover{
   transform: translate3d(0,-1px,0) scale(1.07);
   transition: all .4s ease;
-  box-shadow: 0 0 20px rgb(169, 164, 164);
+  box-shadow: 0 0 20px rgb(48, 46, 46);
 }
 
 .filter-container{
@@ -129,12 +115,43 @@ header{
   justify-content: space-between;
 }
 
- /* footer{
+#load-more{
+  margin-left: 750px;
+  margin-top: 20px;
+  display: inline-block;
+  padding: 13px 30px;
+  border: 1px solid #334;
+  color: #334;
+  font-size: 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+#load-more:hover{
+  background-color: rgb(65, 98, 189);
+  border-color: rgb(65, 98, 189);
+  color: #fff;
+}
+
+.container1, .image{
+  width: 50%;
+  /* height: auto; */
+  padding: 40px;
+  padding-right: 20px;
+}
+
+.container1 , .image:hover {
+  transform: scale(1.2);
+ 
+}
+
+ footer{
   text-align: center;
   background-color: #8482bc;
   color: #000000;
   padding: 20px;
   margin-bottom: 50px;
+
 
 } 
 
@@ -148,8 +165,8 @@ body {
 }   
 
 main{
-  width: 90vw;
   margin: 0 auto;
   padding: 30px 20px;
   min-height: calc(100vh - 211px -58px);
-} */
+}
+
