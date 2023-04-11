@@ -69,12 +69,18 @@ header{
     position:absolute;
     text-align: left;
     margin-top: 1rem;
+    background-color: #f0ecec;
+    border: 1px solid rgb(233, 229, 229);
+    /* padding-bottom: 60px; */
+
   }
 
   .p{
-    text-align: center;
+    text-align: left;
     color:  rgb(65, 98, 189);
+    padding: 15px;
   }
+
 
 #forma{
   display: flex;
@@ -133,16 +139,45 @@ header{
   color: #fff;
 }
 
-.container1, .image{
-  width: 50%;
-  /* height: auto; */
-  padding: 40px;
-  padding-right: 20px;
+.main-container{
+  background-color: #b1a9a9;
+  display: flex;
+  flex: wrap;
+  margin-top: 90px;
+  border: 1px solid rgb(157, 150, 150);
+
 }
 
-.container1 , .image:hover {
-  transform: scale(1.2);
- 
+.image:hover{
+  transform: scale(1.05);
+  transition: 1s ease-out;
+
+}
+
+.container1 .image{
+  width: 100%;
+  padding: 20px;
+  /* padding-right:  10px; */
+}
+
+.product-title{
+  padding: 20px; 
+  /* padding-bottom: 10px; */
+}
+#title{
+  text-align: center;
+}
+
+.main-container .container2 .info{
+  margin:20px;
+}
+
+.main-container .container2 .image_body{
+  margin:20px;
+}
+
+.column-heading{
+  text-align: center;
 }
 
  footer{
@@ -151,10 +186,7 @@ header{
   color: #000000;
   padding: 20px;
   margin-bottom: 50px;
-
-
 } 
-
  html, body {
   height: 100%;
 } 

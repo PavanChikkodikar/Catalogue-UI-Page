@@ -84,7 +84,7 @@ myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
 
 var raw = JSON.stringify({
   "page": 1,
-  "count": 21,
+  "count": 20,
   "facet_filters": decodedFacetArray,
   "search_str": prod_query 
 });
@@ -151,14 +151,16 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         card.appendChild(cardButton);
         prodcard.appendChild(card)
 
-        card.style.maxWidth = "18rem"
+        card.style.maxWidth = "15rem"
         card.style.margin = "1rem"
         card.style.border = "1px solid #dee2e6"
+        card.style.textAlign="center"
+        card.style.padding="8px"
         cardImg.style.width = "100%"
         cardLink.style.position = "absolute"
         cardLink.style.bottom = "0"
         cardLink.style.width = "100%"
-        cardButton.style.marginLeft = "100px"
+        cardButton.style.marginLeft = "17px"
         cardButton.style.height = "45px"
         cardButton.style.width = "90px"
         cardButton.style.borderRadius = "15px"
@@ -171,7 +173,7 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
             sideBar = document.getElementsByClassName('sidebar')[0];
             facets = data["facets"] || {};
             keys = Object.keys(facets) || [];
-            sideBar.innerHTML += '<hr class="horizontalbreak1">'
+            sideBar.innerHTML += ''   //<hr class="line">
             for (ind in keys) {
               var fieldName = document.createElement("div");
       
@@ -186,7 +188,7 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
                       <label for="categorylabel"> ${facets[keys[ind]]["values"][ind2]}(${(facets[keys[ind]]["values"][ind2+1])})</label><br>
                   `
               }
-              fieldName.innerHTML += '<hr class="horizontalbreak1">';
+              fieldName.innerHTML += '<hr class="line">';
               fieldName.innerHTML += "</form>";
               sideBar.appendChild(fieldName);
             }

@@ -73,7 +73,6 @@ window.onload = function () {
       }
       
       return { dictionary, relatedFields };
-
     
   };
 
@@ -100,29 +99,32 @@ window.onload = function () {
 
     prod_container.innerHTML = `
 
-    <div class="container1">
-      <img class="image" src="${product["productImage"]}" onclick="window.open('${product["productImage"]}','_self')" >
-    </div>
+    <div class="main-container">
 
-    <div class="container2">
-      <p class="product-title"><h2>${product["productName"]}</h2></p>
+        <div class="container1">
+          <img class="image" src="${product["productImage"]}" onclick="window.open('${product["productImage"]}','_self')" >
+        </div>
 
-      <p class="info">Price : &#8377;${displayPrice}</sup></p>
-   
-      <p class="info">Quanitity : ${product["field_485"]}</p>
-   
-      <p class="info">UniqueID : ${product["uniqueId"]}</p>
-     
-      <p class="info">SKU :${product["field_337"]}</p>
+        <div class="container2" >
+          <p class="product-title"><h2 id="title">${product["productName"]}</h2></p>
+          <hr class="Line">
+
+          <p class="info">Price :&nbsp;  &#8377; ${displayPrice}</sup></p>
+       
+          <p class="info">Quanitity : &nbsp;   ${product["field_485"]}</p>
       
-      <p class="info">Product Status : ${product["product_status"]}</p>   
-      
-    </div>
+          <p class="info">UniqueID : &nbsp;   ${product["uniqueId"]}</p>
+        
+          <p class="info">SKU : &nbsp;   &${product["field_337"]}</p>
+          
+          <p class="info">Product Status : &nbsp;  ${product["product_status"]}</p>   
+  
+          <p class="column-heading" style="font-weight:700">Additional Information</p>
+          <hr class="Line">
+          <p class="image_body">${product["field_476"]}</p>
 
-    <div class="container3">
-      <p class="column-heading">Additional Information</p>
-      <hr class="Line">
-      <p class="image_body">${product["field_476"]}</p>
+        </div>
+
     </div>
    
   `;
