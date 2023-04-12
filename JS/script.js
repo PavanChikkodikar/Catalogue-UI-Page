@@ -48,6 +48,40 @@ function checkbox(){
 const processChanges = debounce(() => search());
 const check = debounce(() => checkbox());
 
+//pagination to go back to previous page
+function prev(){
+  const queryString = new URL(window.location.href)
+  pageNumber = queryString.searchParams.get('page')
+  queryString.searchParams.delete('page')
+          if (pageNumber != null){
+            queryString.searchParams.delete('page')
+            var pageValue = parseInt(pageNumber) - 1
+            queryString.searchParams.append('page',pageValue.toString())
+            window.location.href = queryString
+          }
+}
+//pagination to go to next page
+function next(){
+  const queryString = new URL(window.location.href)
+          pageNumber = queryString.searchParams.get('page')
+          if(pageNumber==null){
+            pageValue=2  
+            queryString.searchParams.append('page',pageValue.toString())
+            window.location.href = queryString
+            }
+          else if(!(pageNumber == null)){
+            queryString.searchParams.delete('page')
+            var pageValue = parseInt(pageNumber) + 1
+            queryString.searchParams.append('page',pageValue.toString())
+            window.location.href=queryString
+          }
+        }
+        // if (pageNo===null){
+        //   pageNo = 1
+        // }
+
+
+
 
 window.onload = function()
 {
@@ -55,9 +89,28 @@ window.onload = function()
   const urlParams = new URLSearchParams(queryString);
   let prod_query = urlParams.get('q');
   let facets = urlParams.get('facets');
+  let pageNo = urlParams.get('page');
   let decoded = decodeURIComponent(facets);
+  let count = urlParams.get('count');
+    if (count === null){
+      count = 20;
+    }
   const facetArray = decoded.split(",")
-    const decodedFacetArray = [];
+  const decodedFacetArray = [];
+
+  function safeTraverse(obj, paths = []) {
+    let val = obj;
+    let idx = 0;
+
+    while (idx < paths.length) {
+        if (!val) {
+            return null;
+        }
+        val = val[paths[idx]];
+        idx++;
+    }
+    return val === 0 ? '0' : val;
+  }
     for (let i = 0;i < facetArray.length;i += 1){
       let newq = facetArray[i].replaceAll('\\\"','\"');
       decodedFacetArray.push(newq)
@@ -83,7 +136,7 @@ myHeaders.append("sec-ch-ua-mobile", "?0");
 myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
 
 var raw = JSON.stringify({
-  "page": 1,
+  "page": pageNo,
   "count": 20,
   "facet_filters": decodedFacetArray,
   "search_str": prod_query 
@@ -139,6 +192,7 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
     
         var cardButton = document.createElement("button");
         cardButton.textContent = "View Product";
+        cardButton.classList.add("my-button");
         var myCard = document.getElementById("myCard");
         cardButton.onclick = function() {
           window.open(`index_PDP.html?ProductId=${products[i]['uniqueId']}`);
@@ -151,7 +205,7 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         card.appendChild(cardButton);
         prodcard.appendChild(card)
 
-        card.style.maxWidth = "15rem"
+        card.style.maxWidth = "13rem"
         card.style.margin = "1rem"
         card.style.border = "1px solid #dee2e6"
         card.style.textAlign="center"
@@ -160,10 +214,11 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         cardLink.style.position = "absolute"
         cardLink.style.bottom = "0"
         cardLink.style.width = "100%"
-        cardButton.style.marginLeft = "17px"
+        cardButton.style.marginLeft = "10px"
         cardButton.style.height = "45px"
         cardButton.style.width = "90px"
         cardButton.style.borderRadius = "15px"
+        
 
       }
     //getting all the filters
@@ -193,6 +248,27 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
               sideBar.appendChild(fieldName);
             }
       }
+            numberOfProd=safeTraverse(data,["response","numberOfProducts"])
+            pagi = document.getElementsByClassName('pagi')[0];
+            if(Number.isInteger(numberOfProd/count)===true){
+              dataPages = Math.trunc((numberOfProd/count))
+            }
+            else{
+              dataPages = Math.trunc((numberOfProd/count))+1
+            }
+            if (numberOfProd !== 0){
+            pagi.innerHTML += `<button id="prev" class="btn btn-light prev" type="text" onclick=prev()>Prev</button>
+            <div id="paginfo">
+            Page `+pageNo+` Of `+dataPages+`
+            </div>
+            <button id="next" class="btn btn-light next" tyoe="text" onclick=next()>Next</button>`;
+            if (pageNo == 1){
+              document.getElementById('prev').disabled = true;
+            }
+            if (pageNo == dataPages){
+              document.getElementById('next').disabled = true;
+            }
+            }
     })
   })
 }

@@ -13,7 +13,7 @@ header{
     align-items: center;
     z-index: 99;
     box-shadow: 0 0 10px #f6f3f3;
-    background: rgba(50, 13, 199, 0.5);
+    background: #6f6c6c;
 }
 
 .logo{
@@ -65,13 +65,14 @@ header{
     height: 100%;
     width: 15%;
     overflow: auto;
+    left:10px;
     display:block;
     position:absolute;
     text-align: left;
     margin-top: 1rem;
-    background-color: #f0ecec;
-    border: 1px solid rgb(233, 229, 229);
-    /* padding-bottom: 60px; */
+    background-color: #f1eded;
+    border: 1px solid rgb(240, 236, 236);
+    border-radius: 10px;
 
   }
 
@@ -80,7 +81,6 @@ header{
     color:  rgb(65, 98, 189);
     padding: 15px;
   }
-
 
 #forma{
   display: flex;
@@ -93,13 +93,12 @@ header{
   margin-bottom: 5rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  border: 3px solid black;
-  border-radius:8px;
+  /* border: 3px solid black; */
+  border-radius:15px;
   transition: all .5s ease;
   color:white;
   background-color: #504d4d;
 }
-
 
 .card:hover{
   transform: translate3d(0,-1px,0) scale(1.07);
@@ -121,30 +120,13 @@ header{
   justify-content: space-between;
 }
 
-#load-more{
-  margin-left: 750px;
-  margin-top: 20px;
-  display: inline-block;
-  padding: 13px 30px;
-  border: 1px solid #334;
-  color: #334;
-  font-size: 16px;
-  background-color: white;
-  cursor: pointer;
-}
-
-#load-more:hover{
-  background-color: rgb(65, 98, 189);
-  border-color: rgb(65, 98, 189);
-  color: #fff;
-}
-
 .main-container{
   background-color: #b1a9a9;
   display: flex;
   flex: wrap;
   margin-top: 90px;
   border: 1px solid rgb(157, 150, 150);
+  border-radius: 30px;
 
 }
 
@@ -155,8 +137,9 @@ header{
 }
 
 .container1 .image{
-  width: 100%;
+  width: 95%;
   padding: 20px;
+  border-radius: 60px;
   /* padding-right:  10px; */
 }
 
@@ -178,14 +161,24 @@ header{
 
 .column-heading{
   text-align: center;
+  font-weight:700;
+}
+
+.my-button {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
  footer{
   text-align: center;
-  background-color: #8482bc;
-  color: #000000;
+  background-color: #6f6c6c;
+  color:white;
   padding: 20px;
-  margin-bottom: 50px;
+  position:fixed;
+  left:0 ;
+  bottom: 0;
+  width: 100%;
 } 
  html, body {
   height: 100%;
