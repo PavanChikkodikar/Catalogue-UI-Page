@@ -7,11 +7,18 @@ function debounce(func,delay=3000){
     }, delay);
   };
 }
+//function for search
+let debounceTimer;
+function search() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    let searchQuery = document.getElementById("srch").value;
+    window.parent.location = `index_PLP.html?q=${searchQuery}`;
+  }, 3000);
+}
 
-//function for search 
-function search(){
-  let searchQuery = document.getElementById("srch").value;
-  window.parent.location=`index_PLP.html?q=${searchQuery}`;
+function reset(){
+  window.location.href = 'index_PLP.html';
 }
 
 //function for checkbox in facets/filters
@@ -45,7 +52,7 @@ function checkbox(){
   window.location.href = `index_PLP.html?facets=${facetQuery}`
 }
 
-const processChanges = debounce(() => search());
+
 const check = debounce(() => checkbox());
 
 //pagination to go back to previous page
@@ -76,12 +83,7 @@ function next(){
             window.location.href=queryString
           }
         }
-        // if (pageNo===null){
-        //   pageNo = 1
-        // }
-
-
-
+       
 
 window.onload = function()
 {
@@ -97,6 +99,10 @@ window.onload = function()
     }
   const facetArray = decoded.split(",")
   const decodedFacetArray = [];
+
+  if (pageNo===null){
+    pageNo = 1
+  }
 
   function safeTraverse(obj, paths = []) {
     let val = obj;
@@ -149,6 +155,9 @@ var requestOptions = {
   redirect: 'follow'
 };
 
+// let loadingGIF = document.getElementById("img");
+// loadingGIF.setAttribute("src", "/Images/loading_img.gif");
+// document.body.appendChild(loadingGIF);
 
 
 fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e67002742cef", requestOptions)
@@ -157,7 +166,7 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
       let prodcard = document.getElementById("forma")
       products = data["response"]["products"]
       let filters = data["facets"]
-      console.log(filters)
+
       //iterating throught all products 
       for (let i = 0; i < products.length; i++) {
 
@@ -167,14 +176,13 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         let cardTitle = document.createElement("h6")
         let cardUniqueId = document.createElement("p")
         let cardLink = document.createElement("a")
-        // let cardButton = document.createElement("button")
 
         card.classList.add("card")
         cardImg.classList.add("card-img-top")
         cardBody.classList.add("card-body")
         cardTitle.classList.add("card-title")
         cardLink.classList.add("btn", "btn-dark", "stretched-link")
-        // cardButton.classList.add("btn", "btn-dark", "stretched-link")
+
         //displaying the default image if we dont have any product image
         const defaultImageUrl = '/Images/default_img.jpeg';
         for (let i = 0; i < products.length; i++) {
@@ -259,7 +267,9 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
             if (numberOfProd !== 0){
             pagi.innerHTML += `<button id="prev" class="btn btn-light prev" type="text" onclick=prev()>Prev</button>
             <div id="paginfo">
-            Page `+pageNo+` Of `+dataPages+`
+             
+              `+`You are on page `+pageNo+`
+              
             </div>
             <button id="next" class="btn btn-light next" tyoe="text" onclick=next()>Next</button>`;
             if (pageNo == 1){
@@ -269,6 +279,23 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
               document.getElementById('next').disabled = true;
             }
             }
+            if(pageNo == 1 && pageNo == dataPages){
+              document.getElementsByClassName('pagi')[0].style.display="None";
+            }
+
+            if (decodedFacetArray.length > 0){
+              if(decodedFacetArray[0] !== ""){
+              var markedCheckBox1 = document.querySelectorAll('input[type="checkbox"].filter');
+              for (var checked of markedCheckBox1){
+                checked.checked=true;
+              }}
+              else if(decodedFacetArray[0] ==""){
+                document.getElementById("reset").disabled=true
+              }
+        }
+        else{
+          document.getElementById("reset").disabled=true
+        }
     })
   })
 }

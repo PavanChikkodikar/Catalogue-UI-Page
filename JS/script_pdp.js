@@ -1,3 +1,7 @@
+function reset(){
+  window.location.href = 'index_PLP.html';
+}
+
 function safeTraverse(obj, paths = []){
     let val = obj;
     let idx = 0;
@@ -11,6 +15,7 @@ function safeTraverse(obj, paths = []){
     }
     return val === 0 ? '0' : val;
   }
+
 
 
 window.onload = function () {

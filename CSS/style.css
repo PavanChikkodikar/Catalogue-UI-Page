@@ -13,7 +13,7 @@ header{
     align-items: center;
     z-index: 99;
     box-shadow: 0 0 10px #f6f3f3;
-    background: #6f6c6c;
+    background: #74a3d9;
 }
 
 .logo{
@@ -69,7 +69,7 @@ header{
     display:block;
     position:absolute;
     text-align: left;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     background-color: #f1eded;
     border: 1px solid rgb(240, 236, 236);
     border-radius: 10px;
@@ -103,7 +103,14 @@ header{
 .card:hover{
   transform: translate3d(0,-1px,0) scale(1.07);
   transition: all .4s ease;
-  box-shadow: 0 0 20px rgb(48, 46, 46);
+  box-shadow: 0 0 25px rgb(65, 98, 189);
+}
+
+.btn:hover{
+  opacity:0.8;
+  box-shadow: 0 0 11px rgb(65, 98, 189);
+  transform: translate3d(0,-1px,0) scale(1.07);
+  transition: all .4s ease; 
 }
 
 .filter-container{
@@ -112,6 +119,13 @@ header{
   float: left;
   padding: 20px;
   
+}
+
+.center{
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  /* font-family:'Times New Roman', Times, serif; */
 }
 
 .products-container{
@@ -140,12 +154,10 @@ header{
   width: 95%;
   padding: 20px;
   border-radius: 60px;
-  /* padding-right:  10px; */
 }
 
 .product-title{
   padding: 20px; 
-  /* padding-bottom: 10px; */
 }
 #title{
   text-align: center;
@@ -165,9 +177,38 @@ header{
 }
 
 .my-button {
+  color: rgb(59, 59, 218);
   margin-top: 15px;
   margin-bottom: 10px;
   cursor: pointer;
+  box-shadow: 0 0 11px rgb(22, 66, 187);
+}
+
+.pagi{
+  justify-content: center;
+  align-items: center;
+  display:flex;
+  margin-bottom:2rem;
+  margin-left:15rem;
+}
+
+.btn:disabled{
+  opacity:0.35;
+}
+
+.prev{
+  margin-right:1rem;
+  background-color:white;
+}
+
+.next{
+  margin-left:1rem;
+  background-color:white;
+}
+
+.line{
+  background-color: white;
+  height:1px;
 }
 
  footer{
