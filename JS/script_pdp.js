@@ -115,17 +115,18 @@ window.onload = function () {
           <hr class="Line">
 
           <p class="info">Price :&nbsp;  &#8377; ${displayPrice}</sup></p>
-       
-          <p class="info">Quanitity : &nbsp;   ${product["field_485"]}</p>
       
           <p class="info">UniqueID : &nbsp;   ${product["uniqueId"]}</p>
         
           <p class="info">SKU : &nbsp;   &${product["field_337"]}</p>  
 
-          <p class="info">Product Status: &nbsp; ${product["product_status"]}</p>
   
           <p class="column-heading">Additional Information</p>
           <hr class="Line">
+
+          <p class="info">Quanitity :${product["field_485"]}</p>
+
+          <p class="info">Product Status:  ${product["product_status"]}</p>
         
           <p class="image_body">${product["field_476"]}</p>
 

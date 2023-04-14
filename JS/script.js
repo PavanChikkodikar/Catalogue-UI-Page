@@ -194,7 +194,7 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         cardImg.setAttribute("src", products[i]["productImage"])
         cardImg.setAttribute("alt", "...")
         cardTitle.textContent = products[i]["productName"]
-        cardUniqueId.textContent = "UniqueId:" + products[i]["uniqueId"]
+        // cardUniqueId.textContent = "UniqueId:" + products[i]["uniqueId"]
         cardLink.setAttribute("href", "/pdp.html?ProductId=" + products[i]["uniqueId"])
         // cardButton.textContent = "View Product"
     
