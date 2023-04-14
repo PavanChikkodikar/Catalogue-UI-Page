@@ -21,10 +21,8 @@ header{
     height: 90px;
     width: 130px;
     margin-left: 10px;
+    cursor: pointer;
 }
-/* .reset-btn{
-  background-color: #b93838;
-} */
 
 .search-box{
     flex: 0.5;
@@ -73,7 +71,6 @@ header{
     display:block;
     position:absolute;
     text-align: left;
-    /* margin-top: 1rem; */
     background-color: #f1eded;
     border: 1px solid rgb(240, 236, 236);
     border-radius: 10px;
@@ -101,7 +98,6 @@ header{
   margin-bottom: 5rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  /* border: 3px solid black; */
   border-radius:15px;
   transition: all .5s ease;
   color:white;
@@ -127,15 +123,13 @@ header{
   width: 20%;
   float: left;
   padding: 20px;
- 
-  
+
 }
 
 .center{
   text-align: center;
   padding-bottom: 20px;
   padding-top: 10px;
-  /* font-family:'Times New Roman', Times, serif; */
 }
 
 .products-container{
@@ -150,14 +144,11 @@ header{
   flex: wrap;
   margin-top: 90px;
   border: 1px solid rgb(157, 150, 150);
-  border-radius: 30px;
-
 }
 
 .image:hover{
   transform: scale(1.05);
   transition: 1s ease-out;
-
 }
 
 .container1 .image{
@@ -169,6 +160,7 @@ header{
 .product-title{
   padding: 20px; 
 }
+
 #title{
   text-align: center;
 }
@@ -223,13 +215,13 @@ header{
 
  footer{
   text-align: center;
-  background-color: #6f6c6c;
   color:white;
   padding: 20px;
   position:fixed;
   left:0 ;
   bottom: 0;
   width: 100%;
+  
 } 
  html, body {
   height: 100%;

@@ -16,8 +16,6 @@ function safeTraverse(obj, paths = []){
     return val === 0 ? '0' : val;
   }
 
-
-
 window.onload = function () {
     const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);

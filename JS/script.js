@@ -7,6 +7,7 @@ function debounce(func,delay=3000){
     }, delay);
   };
 }
+
 //function for search
 let debounceTimer;
 function search() {
@@ -17,6 +18,13 @@ function search() {
   }, 3000);
 }
 
+//this code will reload the plp when we click logo
+const logo = document.querySelector('.logo');
+logo.addEventListener('click', () => {
+  window.location.href = 'index_PLP.html';
+});
+
+//function for reset
 function reset(){
   window.location.href = 'index_PLP.html';
 }
@@ -46,7 +54,6 @@ function checkbox(){
           stri += "\\";
           stri += '"';
           facetQuery.push(String(stri))
-    
     }
   }
   window.location.href = `index_PLP.html?facets=${facetQuery}`
@@ -67,6 +74,7 @@ function prev(){
             window.location.href = queryString
           }
 }
+
 //pagination to go to next page
 function next(){
   const queryString = new URL(window.location.href)
@@ -155,10 +163,6 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-// let loadingGIF = document.getElementById("img");
-// loadingGIF.setAttribute("src", "/Images/loading_img.gif");
-// document.body.appendChild(loadingGIF);
-
 
 fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e67002742cef", requestOptions)
   .then(response => {
@@ -196,7 +200,6 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         cardTitle.textContent = products[i]["productName"]
         // cardUniqueId.textContent = "UniqueId:" + products[i]["uniqueId"]
         cardLink.setAttribute("href", "/pdp.html?ProductId=" + products[i]["uniqueId"])
-        // cardButton.textContent = "View Product"
     
         var cardButton = document.createElement("button");
         cardButton.textContent = "View Product";
