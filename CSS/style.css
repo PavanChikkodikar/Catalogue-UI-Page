@@ -22,6 +22,22 @@ header{
     width: 130px;
     margin-left: 10px;
     cursor: pointer;
+    
+}
+
+#reset {
+  font-size: 20px;
+  background-color: #f0e9e9; 
+  text-align: center;
+  border-radius: 8px;
+
+}
+
+.pdp_logo{
+  height: 90px;
+  width: 130px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .search-box{
@@ -43,7 +59,6 @@ header{
     padding-left: 50px;
     padding-right: 40px;
     text-align: center;
-     
 }
  
 .search-box button{
@@ -71,11 +86,15 @@ header{
     display:block;
     position:absolute;
     text-align: left;
-    background-color: #f1eded;
+    background-color: #f0e9e9;
     border: 1px solid rgb(240, 236, 236);
     border-radius: 10px;
     position: fixed;
 
+  }
+
+  .sidebar #reset{
+    margin-left: 75px;
   }
 
   .p{
@@ -84,6 +103,25 @@ header{
     padding: 15px;
   
   }
+/* 
+  #loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #loading-spinner img {
+    width: 100px;
+    height: 100px;
+  }
+   */
 
 #forma{
   display: flex;
@@ -102,7 +140,6 @@ header{
   transition: all .5s ease;
   color:white;
   background-color: #504d4d;
-
 }
 
 .card:hover{
@@ -221,8 +258,9 @@ header{
   left:0 ;
   bottom: 0;
   width: 100%;
-  
+
 } 
+
  html, body {
   height: 100%;
 } 
@@ -237,4 +275,18 @@ main{
   padding: 30px 20px;
   min-height: calc(100vh - 211px -58px);
 }
+
+
+/* @media print {
+  container {
+    margin: 0;
+    padding: 0;
+    width: 210mm;
+    height: 297mm;
+  }
+  
+  .forma {
+    page-break-inside: avoid;
+  }
+} */
 

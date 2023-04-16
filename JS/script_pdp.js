@@ -1,3 +1,4 @@
+//function for reset button
 function reset(){
   window.location.href = 'index_PLP.html';
 }
@@ -17,7 +18,7 @@ function safeTraverse(obj, paths = []){
   }
 
 window.onload = function () {
-    const queryString = window.location.search;
+  const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let prodId = urlParams.get('ProductId');
 
@@ -116,7 +117,7 @@ window.onload = function () {
       
           <p class="info">UniqueID : &nbsp;   ${product["uniqueId"]}</p>
         
-          <p class="info">SKU : &nbsp;   &${product["field_337"]}</p>  
+          <p class="info">SKU : &nbsp; ${product["field_337"]}</p>  
 
   
           <p class="column-heading">Additional Information</p>

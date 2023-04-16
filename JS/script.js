@@ -8,6 +8,8 @@ function debounce(func,delay=3000){
   };
 }
 
+
+
 //function for search
 let debounceTimer;
 function search() {
@@ -163,6 +165,23 @@ var requestOptions = {
   redirect: 'follow'
 };
 
+const prodcard = document.createElement("div");
+prodcard.className = "prodcard";
+
+// Set the innerHTML of the prodcard
+for (let i = 0; i < 10; i++) {
+prodcard.innerHTML += `
+  <div class="card">
+    <img class="card-img-top" src="loading.gif" alt="Loading...">
+    <div class="card-body">
+      <h4 class="card-title">Loading...</h4>
+      <p>UniqueId: </p>
+      <a href="#" class="btn btn-dark btn-see-details" disabled>See Details</a>
+    </div>
+  </div>
+`;
+}
+
 
 fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e67002742cef", requestOptions)
   .then(response => {
@@ -230,7 +249,6 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         cardButton.style.width = "90px"
         cardButton.style.borderRadius = "15px"
         
-
       }
     //getting all the filters
       for (let fieldId in filters) {
