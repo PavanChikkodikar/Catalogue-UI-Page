@@ -8,8 +8,6 @@ function debounce(func,delay=3000){
   };
 }
 
-
-
 //function for search
 let debounceTimer;
 function search() {
@@ -169,18 +167,18 @@ const prodcard = document.createElement("div");
 prodcard.className = "prodcard";
 
 // Set the innerHTML of the prodcard
-for (let i = 0; i < 10; i++) {
-prodcard.innerHTML += `
-  <div class="card">
-    <img class="card-img-top" src="loading.gif" alt="Loading...">
-    <div class="card-body">
-      <h4 class="card-title">Loading...</h4>
-      <p>UniqueId: </p>
-      <a href="#" class="btn btn-dark btn-see-details" disabled>See Details</a>
-    </div>
-  </div>
-`;
-}
+// for (let i = 0; i < 10; i++) {
+// prodcard.innerHTML += `
+//   <div class="card">
+//     <img class="card-img-top" src="plp_load.gif" alt="Loading...">
+//     <div class="card-body">
+//       <h4 class="card-title">Loading...</h4>
+//       <p>UniqueId: </p>
+//       <a href="#" class="btn btn-dark btn-see-details" disabled>See Details</a>
+//     </div>
+//   </div>
+// `;
+// }
 
 
 fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e67002742cef", requestOptions)
@@ -237,9 +235,9 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
 
         card.style.maxWidth = "13rem"
         card.style.margin = "1rem"
-        card.style.border = "1px solid #dee2e6"
+        card.style.border = "2px solid #dee2e6"
         card.style.textAlign="center"
-        card.style.padding="8px"
+        card.style.padding="6px"
         cardImg.style.width = "100%"
         cardLink.style.position = "absolute"
         cardLink.style.bottom = "0"
@@ -247,7 +245,7 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         cardButton.style.marginLeft = "10px"
         cardButton.style.height = "45px"
         cardButton.style.width = "90px"
-        cardButton.style.borderRadius = "15px"
+        cardButton.style.borderRadius = "10px"
         
       }
     //getting all the filters
