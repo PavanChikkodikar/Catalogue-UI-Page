@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: sans-serif;
 }
 
 header{
@@ -30,7 +30,6 @@ header{
   background-color: #f0e9e9; 
   text-align: center;
   border-radius: 8px;
-
 }
 
 .pdp_logo{
@@ -83,7 +82,7 @@ header{
     height: 100%;
     width: 15%;
     overflow: auto;
-    left:10px;
+    left:20px;
     display:block;
     position:absolute;
     text-align: left;
@@ -91,7 +90,6 @@ header{
     border: 1px solid rgb(240, 236, 236);
     border-radius: 10px;
     position: fixed;
-
   }
 
   .sidebar #reset{
@@ -107,22 +105,15 @@ header{
 
 #forma{
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 80px;
   font-size: 20px;
-  /* padding: 5px; */
 } 
 
 .card{
-  /* margin-top: 2rem; */
-  /* margin-bottom: 5rem; */
-  /* margin-left: 0.2rem;
-  margin-right: 0.2rem; */
   border-radius:15px;
   transition: all .5s ease;
-  background-color: #a7c2eb;
-  
+  background-color: #b3c8e9; 
 }
 
 .card-title{
@@ -143,11 +134,9 @@ header{
 }
 
 .filter-container{
-  padding-top: 100px;
-  width: 20%;
+  width: 18%;
   float: left;
   padding: 20px;
-
 }
 
 .center{
@@ -171,20 +160,19 @@ header{
 }
 
 .image:hover{
-  transform: scale(1.05);
+  transform: scale(1.03);
   transition: 1s ease-out;
 }
 
 .container1 .image{
-  width: 95%;
-  padding: 20px;
+  width: 100%;
+  padding: 40px;
   border-radius: 60px;
 }
 
 .product-title{
   padding: 20px; 
 }
-
 
 .main-container .container2 .info{
   margin:20px;
@@ -204,6 +192,8 @@ header{
   margin-top: 15px;
   margin-bottom: 10px;
   cursor: pointer;
+  display :contents;
+  color: rgb(4, 8, 252);
 }
 
 .pagi{
@@ -266,6 +256,3 @@ main{
   padding: 30px 20px;
   min-height: calc(100vh - 211px -58px);
 }
-
-
-

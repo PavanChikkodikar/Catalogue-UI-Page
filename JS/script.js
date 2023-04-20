@@ -102,6 +102,10 @@ window.onload = function()
   let pageNo = urlParams.get('page');
   let decoded = decodeURIComponent(facets);
   let count = urlParams.get('count');
+  let catalogId = urlParams.get('CatalogID');
+  if (catalogId === null){
+      catalogId = "6391b1448f93e67002742cef";
+    }
     if (count === null){
       count = 20;
     }
@@ -233,7 +237,7 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
         card.appendChild(cardButton);
         prodcard.appendChild(card)
 
-        card.style.maxWidth = "13rem"
+        card.style.maxWidth = "12rem"
         card.style.margin = "1rem"
         card.style.border = "2px solid #dee2e6"
         card.style.textAlign="center"

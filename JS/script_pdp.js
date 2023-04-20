@@ -21,6 +21,8 @@ window.onload = function () {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let prodId = urlParams.get('ProductId');
+  let prodQuery = urlParams.get('q') || "";
+  let catalogId = urlParams.get('CatalogID');
 
   var myHeaders = new Headers();
   myHeaders.append("Accept", "*/*");
@@ -123,7 +125,7 @@ window.onload = function () {
 
           <p class="info">Product Status: &nbsp; ${product["product_status"]}</p> 
           
-          <div class="conatiner3>
+          <div class="container3>
             <p class="column-heading">Additional Information</p>
             <hr class="Line">
             <p class="image_body">${product["field_476"]}</p>
