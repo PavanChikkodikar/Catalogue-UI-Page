@@ -170,25 +170,13 @@ var requestOptions = {
 const prodcard = document.createElement("div");
 prodcard.className = "prodcard";
 
-// Set the innerHTML of the prodcard
-// for (let i = 0; i < 10; i++) {
-// prodcard.innerHTML += `
-//   <div class="card">
-//     <img class="card-img-top" src="plp_load.gif" alt="Loading...">
-//     <div class="card-body">
-//       <h4 class="card-title">Loading...</h4>
-//       <p>UniqueId: </p>
-//       <a href="#" class="btn btn-dark btn-see-details" disabled>See Details</a>
-//     </div>
-//   </div>
-// `;
-// }
 
 
 fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e67002742cef", requestOptions)
   .then(response => {
     response.json().then(data => {
       let prodcard = document.getElementById("forma")
+      prodcard.innerHTML = "";
       products = data["response"]["products"]
       let filters = data["facets"]
 

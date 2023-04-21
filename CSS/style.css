@@ -114,6 +114,7 @@ header{
   border-radius:15px;
   transition: all .5s ease;
   background-color: #b3c8e9; 
+  
 }
 
 .card-title{
@@ -149,6 +150,7 @@ header{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  
 }
 
 .main-container{
