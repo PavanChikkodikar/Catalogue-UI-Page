@@ -3,6 +3,11 @@ function reset(){
   window.location.href = 'index_PLP.html';
 }
 
+// opening pdp images in new tab
+function openImage(src) {
+  window.open(src);
+}
+
 function safeTraverse(obj, paths = []){
     let val = obj;
     let idx = 0;
@@ -109,7 +114,7 @@ window.onload = function () {
     <div class="main-container">
 
         <div class="container1">
-          <img class="image" src="${product["productImage"]}" onclick="window.open('${product["productImage"]}','_self')" >
+          <img class="image" src="${product["productImage"]}" onclick="openImage(this.src)" onclick="window.open('${product["productImage"]}','_self')"  >
         </div>
 
         <div class="container2" >
@@ -130,7 +135,11 @@ window.onload = function () {
             <p class="column-heading">Additional Information</p>
             <hr class="Line">
             <p class="image_body">${product["field_476"]}</p>
+          </div>
 
+          <div class="container4" id="more_info">
+            <p class="column-heading">More Information</p>
+            <p class="image_body">${product["field_489"]}</p>
           </div>
 
          
