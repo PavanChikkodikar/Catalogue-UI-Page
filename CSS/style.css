@@ -114,7 +114,17 @@ header{
   border-radius:15px;
   transition: all .5s ease;
   background-color: #b3c8e9; 
-  
+  max-width: 12rem; 
+  margin: 1rem; 
+  border: 2px solid rgb(222, 226, 230); 
+  text-align: center; 
+  padding: 6px;
+  display: grid;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .card-title{
@@ -196,6 +206,10 @@ header{
   cursor: pointer;
   display :contents;
   color: rgb(4, 8, 252);
+  margin-left: 10px; 
+  height: 45px; 
+  width: 90px; 
+  border-radius: 10px;
 }
 
 .pagi{
