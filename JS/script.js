@@ -18,6 +18,7 @@ function search() {
   }, 3000);
 }
 
+
 //this code will reload the plp when we click logo
 const logo = document.querySelector('.logo');
 logo.addEventListener('click', () => {
@@ -169,7 +170,6 @@ var requestOptions = {
 
 const prodcard = document.createElement("div");
 prodcard.className = "prodcard";
-
 
 
 fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e67002742cef", requestOptions)

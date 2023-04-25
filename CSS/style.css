@@ -99,8 +99,7 @@ header{
   .p{
     text-align: left;
     padding: 15px;
-    color: rgb(93, 93, 214);
-  
+    color: rgb(93, 93, 214); 
   }
 
 #forma{
@@ -116,7 +115,6 @@ header{
   background-color: #b3c8e9; 
   max-width: 12rem; 
   margin: 1rem; 
-  border: 2px solid rgb(222, 226, 230); 
   text-align: center; 
   padding: 6px;
   display: grid;
@@ -169,6 +167,8 @@ header{
   flex: wrap;
   margin-top: 90px;
   border: 1px solid rgb(157, 150, 150);
+  flex-direction: row;
+  width: 100%;
 }
 
 .image:hover{
@@ -177,13 +177,17 @@ header{
 }
 
 .container1 .image{
-  width: 100%;
+  width: 90%;
   padding: 40px;
   border-radius: 60px;
 }
 
 .product-title{
   padding: 20px; 
+}
+
+.container2{
+  width: 120%;
 }
 
 .main-container .container2 .info{
@@ -194,16 +198,10 @@ header{
   margin:20px;
 }
 
-.container4{
-    height: 100%;
-    font-size: small;
-    margin-bottom: 5%;
-}
-
 .column-heading{
   text-align: center;
-  font-weight:700;
-  padding-top: 100px;
+  font-weight:500;
+  padding-top: 10px;
 }
 
 .my-button {
@@ -261,7 +259,6 @@ header{
   left:0 ;
   bottom: 0;
   width: 100%;
-
 } 
 
  html, body {

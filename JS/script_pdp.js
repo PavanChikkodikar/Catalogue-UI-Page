@@ -135,14 +135,23 @@ window.onload = function () {
             <p class="column-heading">Additional Information</p>
             <hr class="Line">
             <p class="image_body">${product["field_476"]}</p>
-          </div>
 
-          <div class="container4" id="more_info">
             <p class="column-heading">More Information</p>
-            <p class="image_body">${product["field_489"]}</p>
+            <hr class="Line">
+            <p class="info">Created at : ${product["created_at"]}</p>
+
+            <p class="info">Updated_at :${product["updated_at"]}</p>
+
+            <p class="info">More info 1 :${product["field_443"]}</p>
+
+            <p class="info">More info 2 :${product["field_491"]}</p>
+                      
+            <p class="info">${product["field_489"]}</p>
+
+            
+
           </div>
 
-         
         </div>
 
     </div>
