@@ -135,13 +135,6 @@ header{
   box-shadow: 0 0 25px rgb(89, 91, 95);
 }
 
-.btn:hover{
-  opacity:0.8;
-  box-shadow: 0 0 11px rgb(89, 91, 95);
-  transform: translate3d(0,-1px,0) scale(1.07);
-  transition: all .4s ease; 
-}
-
 .filter-container{
   width: 18%;
   float: left;
@@ -158,7 +151,6 @@ header{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  
 }
 
 .main-container{
@@ -205,15 +197,9 @@ header{
 }
 
 .my-button {
-  margin-top: 15px;
-  margin-bottom: 10px;
   cursor: pointer;
   display :contents;
   color: rgb(4, 8, 252);
-  margin-left: 10px; 
-  height: 45px; 
-  width: 90px; 
-  border-radius: 10px;
 }
 
 .pagi{
@@ -275,3 +261,16 @@ main{
   padding: 30px 20px;
   min-height: calc(100vh - 211px -58px);
 }
+
+
+
+
+/* @media (max-width: 768px) {
+  #forma.row {
+    font-size: 14px;  
+  }
+  #forma.row .col-sm-4 {
+    width: 33.33%;
+    max-width: 33.33%;
+  }
+} */

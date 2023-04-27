@@ -109,13 +109,41 @@ window.onload = function () {
     
     const displayPrice = String(parseInt(price)) || "";
 
+    if (product["field_489"] != null) {
+      const infoString = product["field_489"].replace(/,/g, ",<br>");
+      const infoArray = infoString.split(",");
+    
+      const groupCounts = infoArray.reduce((counts, info) => {
+        const [groupName, value] = info.split("_");
+        counts[groupName] = counts[groupName] || {};
+        counts[groupName][value] = (counts[groupName][value] || 0) + 1;
+        return counts;
+      }, {});
+
+
+      //more-info in pdp
+      const moreInfoDiv = `
+        <div class="colntainer4">
+          <p class="column-heading">More Information</p>
+          <hr class="Line">
+          <div class="image_body">
+            ${Object.entries(groupCounts).map(([groupName, values]) => {
+              const heading = groupName.replace(/_/g, " ");
+              const html = `<p class="info"><strong>${heading}</strong><hr></p>`;
+              const items = Object.entries(values).map(([value, count]) => `<p class="sub-info">${value}: ${count}</p>`).join("");
+              return html + items + " ";
+            }).join("")}
+          </div>
+        </div>
+      `;
+
     prod_container.innerHTML = `
 
     <div class="main-container">
 
         <div class="container1">
           <img class="image" src="${product["productImage"]}" onclick="openImage(this.src)" onclick="window.open('${product["productImage"]}','_self')"  >
-        </div>
+        </div>   
 
         <div class="container2" >
           <p class="product-title"><h2 id="title">${product["productName"]}</h2></p>
@@ -136,27 +164,15 @@ window.onload = function () {
             <hr class="Line">
             <p class="image_body">${product["field_476"]}</p>
 
-            <p class="column-heading">More Information</p>
-            <hr class="Line">
-            <p class="info">Created at : ${product["created_at"]}</p>
-
-            <p class="info">Updated_at :${product["updated_at"]}</p>
-
-            <p class="info">More info 1 :${product["field_443"]}</p>
-
-            <p class="info">More info 2 :${product["field_491"]}</p>
-                      
-            <p class="info">${product["field_489"]}</p>
-
-            
-
           </div>
+          ${moreInfoDiv}
 
         </div>
 
     </div>
    
   `;
+  }
   };
 
   Promise.all([getCatalogueConfig(), postCatalogueProduct()]);

@@ -8,6 +8,11 @@ function debounce(func,delay=3000){
   };
 }
 
+function toggleTheme() {
+  const body = document.querySelector('body');
+  body.classList.toggle('dark-theme');
+}
+
 //function for search
 let debounceTimer;
 function search() {
