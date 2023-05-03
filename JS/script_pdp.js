@@ -124,7 +124,7 @@ window.onload = function () {
       //more-info in pdp
       const moreInfoDiv = `
         <div class="colntainer4">
-          <p class="column-heading">More Information</p>
+          <p class="column-heading"><h5 style="text-align: center;">More Information</h5></p>
           <hr class="Line">
           <div class="image_body">
             ${Object.entries(groupCounts).map(([groupName, values]) => {
@@ -160,7 +160,7 @@ window.onload = function () {
           <p class="info">Product Status: &nbsp; ${product["product_status"]}</p> 
           
           <div class="container3>
-            <p class="column-heading">Additional Information</p>
+            <p class="column-heading"><h5 style="text-align: center;">Additional Information</h5></p>
             <hr class="Line">
             <p class="image_body">${product["field_476"]}</p>
 

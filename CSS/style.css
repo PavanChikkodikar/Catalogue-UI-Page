@@ -169,7 +169,7 @@ header{
 }
 
 .container1 .image{
-  width: 90%;
+  width: 100%;
   padding: 40px;
   border-radius: 60px;
 }
@@ -262,6 +262,26 @@ main{
   min-height: calc(100vh - 211px -58px);
 }
 
+.catalog-grid {
+  margin-bottom: 1%;
+}
+
+@media (max-width:861px)  {
+  .filter-container {
+    display: none;
+  }
+  .sidebar {
+    width: 0;
+  }
+
+  .abc {
+    width: 100%
+  }
+
+  .mobile-filter {
+    display: block;
+  }
+}
 
 
 
