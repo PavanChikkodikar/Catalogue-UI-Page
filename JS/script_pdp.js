@@ -8,6 +8,12 @@ function openImage(src) {
   window.open(src);
 }
 
+//this code will reload the plp when we click logo
+const logo = document.querySelector('.pdp_logo');
+logo.addEventListener('click', () => {
+  window.location.href = 'index_PDP.html';
+});
+
 function safeTraverse(obj, paths = []){
     let val = obj;
     let idx = 0;
@@ -21,6 +27,48 @@ function safeTraverse(obj, paths = []){
     }
     return val === 0 ? '0' : val;
   }
+
+  function setImage(imageUrl, clickedImage){
+    let pdpImage = document.getElementById("pdp-image");
+    pdpImage.setAttribute("src",imageUrl);
+    pdpImage.setAttribute('onclick', `window.open('${imageUrl}', '_blank')`);
+
+    if (currentImage !== null) {
+        currentImage.style.transform = "scale(1)";
+        currentImage.style.boxShadow = "none";
+    }
+    
+    // set the scale of the clicked image to 1.2
+    clickedImage.style.transform = "scale(1.2)";
+
+    // set the currentImage variable to the clicked image
+    currentImage = clickedImage;
+
+    clickedImage.style.transform = "scale(1.2)"; // increase the scale by 20%
+    clickedImage.style.boxShadow =
+    "rgba(0, 0, 0, 0.3) 0px 19px 38px,"+ "rgba(0, 0, 0, 0.22) 0px 15px 12px";
+    
+}
+
+function pdpImage(allimages){
+    
+    let pdpPreview = document.getElementById("pdp-preview");
+    
+      
+        for( let i=0; i < allimages.length;i++){
+            pdpPreview.innerHTML +=`
+            <img class="image-review" src=${allimages[i]} onclick=setImage('${allimages[i]}',this)>
+            `    
+    }
+     
+   
+    if(allimages.length>1){
+    setImage(allimages[0], document.querySelectorAll('.image-review')[0]);
+    }
+
+  }
+    
+
 
 window.onload = function () {
   const queryString = window.location.search;
@@ -137,13 +185,17 @@ window.onload = function () {
         </div>
       `;
 
+      
+
     prod_container.innerHTML = `
 
     <div class="main-container">
 
         <div class="container1">
-          <img class="image" src="${product["productImage"]}" onclick="openImage(this.src)" onclick="window.open('${product["productImage"]}','_self')"  >
-        </div>   
+          <img class="image" src="${product["productImage"][0]}" onclick="openImage(this.src)" onclick="window.open('${product["productImage"]}','_self')"  >
+        </div>  
+        
+        <div class="sidebar1 ">
 
         <div class="container2" >
           <p class="product-title"><h2 id="title">${product["productName"]}</h2></p>
@@ -167,11 +219,19 @@ window.onload = function () {
           </div>
           ${moreInfoDiv}
 
+
+        
+
+        </div>
+
         </div>
 
     </div>
    
   `;
+  pdpImage(product['productImage'])
+  // prod_container.innerHTML += multiImage;
+  // console.log(multiImage)
   }
   };
 

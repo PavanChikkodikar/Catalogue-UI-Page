@@ -23,6 +23,7 @@ header{
     margin-left: 10px;
     cursor: pointer;
     border-radius: 15px;
+    
 }
 
 #reset {
@@ -30,7 +31,11 @@ header{
   background-color: #f0e9e9; 
   text-align: center;
   border-radius: 8px;
+  margin-right: 20px;
+  cursor: pointer;
 }
+
+
 
 .pdp_logo{
   height: 90px;
@@ -38,6 +43,7 @@ header{
   margin-left: 10px;
   cursor: pointer;
   border-radius: 15px;
+  
 }
 
 .search-box{
@@ -179,7 +185,7 @@ header{
 }
 
 .container2{
-  width: 120%;
+  width: 100%;
 }
 
 .main-container .container2 .info{
@@ -266,6 +272,7 @@ main{
   margin-bottom: 1%;
 }
 
+
 @media (max-width:861px)  {
   .filter-container {
     display: none;
@@ -274,23 +281,28 @@ main{
     width: 0;
   }
 
-  .abc {
-    width: 100%
-  }
-
   .mobile-filter {
     display: block;
   }
+
+  .pagi {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  
 }
 
-
-
-/* @media (max-width: 768px) {
-  #forma.row {
-    font-size: 14px;  
+@media print {
+  .card:nth-child(9n+1) {
+      page-break-before: always;
+    }
   }
-  #forma.row .col-sm-4 {
-    width: 33.33%;
-    max-width: 33.33%;
+
+  @media screen and (max-width:768px){
+    /* #forma{
+      margin-left:2rem;
+    } */
+  
   }
-} */
+

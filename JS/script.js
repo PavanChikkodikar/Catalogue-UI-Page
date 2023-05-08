@@ -8,10 +8,6 @@ function debounce(func,delay=3000){
   };
 }
 
-function toggleTheme() {
-  const body = document.querySelector('body');
-  body.classList.toggle('dark-theme');
-}
 
 //function for search
 let debounceTimer;
@@ -203,13 +199,18 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
 
         //displaying the default image if we dont have any product image
         const defaultImageUrl = '/Images/default_img.jpeg';
-        for (let i = 0; i < products.length; i++) {
+        // for (let i = 0; i < products.length; i++) {
           if (products[i]["productImage"] === undefined) {
-            products[i]["productImage"] = defaultImageUrl;
+           
+            cardImg.setAttribute("src",defaultImageUrl )
+          
           }
-        }
+          else{
+            cardImg.setAttribute("src", products[i]["productImage"][0])
+          }
+        // }
         
-        cardImg.setAttribute("src", products[i]["productImage"])
+        
         cardImg.setAttribute("alt", "...")
         cardTitle.textContent = products[i]["productName"]
         // cardUniqueId.textContent = "UniqueId:" + products[i]["uniqueId"]
